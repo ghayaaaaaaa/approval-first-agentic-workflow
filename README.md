@@ -2,7 +2,6 @@
 
 A small, local workflow agent that plans a bounded task, calls allowlisted tools, records each transition in SQLite, and pauses before a file-writing action until a person approves it.
 
-This AI-assisted portfolio demonstration was prepared for Ghaya. It does not contain or train a machine-learning model, and the default planner does not call an LLM. The deterministic planner keeps the demonstration reproducible and offline. The project focuses on agent orchestration, controlled tool use, explicit approval, idempotent execution, and an audit trail.
 
 ## What it does
 
@@ -41,22 +40,4 @@ To start a new run:
 
 Use `--state PATH` with any command to choose a different local SQLite file.
 
-## Design notes
 
-The planner emits typed steps rather than arbitrary code. The tool registry is an explicit allowlist. Tool arguments are resolved only from earlier step results or literal values. The write tool validates its destination, and a pending write cannot run until its action ID is approved. SQLite transactions record state transitions before execution, and a completed step is not run a second time when approval is repeated.
-
-The example data is fictional and included only to make the workflow self-contained. It is not a set of current job listings or a claim about completed client work.
-
-The local SQLite state stores the supplied goal, plan, results, and audit events without application-level encryption. Use synthetic or non-sensitive input only.
-
-## Limitations
-
-This is a demonstrator, not a hosted agent service. It has no user authentication, multi-tenant isolation, cloud deployment, external integrations, or LLM planner. SQLite is intended for a single local operator. Review code and permissions before adapting it to real business workflows.
-
-## Portfolio attribution
-
-Prepared with AI assistance for Ghaya's portfolio. The implementation does not claim that a model was trained. No private client information or credentials are included.
-
-## License
-
-No open-source license is included with this portfolio sample.
