@@ -5,7 +5,7 @@ import uuid
 from typing import Any
 
 from .models import Plan, plan_to_dict
-from .planner import DemoPlanner
+from .planner import DemoPlanner, Planner
 from .store import StateStore
 from .tools import TOOL_ALLOWLIST
 
@@ -24,7 +24,7 @@ def resolve_references(value: Any, results: dict[str, dict[str, Any]]) -> Any:
 
 
 class WorkflowEngine:
-    def __init__(self, store: StateStore, planner: DemoPlanner | None = None):
+    def __init__(self, store: StateStore, planner: Planner | None = None):
         self.store = store
         self.planner = planner or DemoPlanner()
 
