@@ -4,11 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "approval-first-agentic-workflow"
-version = "0.1.0"
-description = "A local, approval-first agentic workflow with a strict tool allowlist and SQLite audit trail."
+version = "0.2.0"
+description = "Approval-first agentic workflow with optional Responses API planning, a strict tool allowlist, and SQLite audit trail."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
+
+[project.optional-dependencies]
+openai = ["openai>=1.66.0"]
 
 [project.scripts]
 approval-agent = "approval_agent.cli:main"
